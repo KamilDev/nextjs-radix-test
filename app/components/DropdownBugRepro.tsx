@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { Menu, X, User, Settings, LogOut } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function DropdownBugRepro() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +24,19 @@ export function DropdownBugRepro() {
       <ol className="mb-4 text-sm text-gray-600 list-decimal list-inside">
         <li>Click the menu button to open the main dropdown</li>
         <li>Try using arrow keys to navigate the main menu items</li>
-        <li>Click &quot;User Menu&quot; to open the nested dropdown</li>
-        <li>Close the nested dropdown</li>
         <li>
-          Try using arrow keys again in the main menu - they won&apos;t work
+          Select &quot;Dropdown Menu&quot; and press enter to open the nested
+          dropdown
+        </li>
+        <li>Press escape to close the nested dropdown</li>
+        <li>
+          Try using arrow keys again in the main menu - they won&apos;t work.
+          Pressing up arrow won&apos;t do anything, pressing down arrow will
+          open the nested dropdown.
+        </li>
+        <li>
+          Using <code>DropdownMenuSub</code> instead would work, but it lacks
+          the ability to choose which side it opens on?
         </li>
       </ol>
 
@@ -108,28 +117,22 @@ export function DropdownBugRepro() {
                       className={cn(
                         "w-full px-4 py-2 hover:bg-accent rounded-md transition-colors outline-none",
                         "cursor-pointer text-left",
-                        "flex items-center justify-between"
+                        "flex items-center justify-between",
+                        "text-blue-500"
                       )}
                     >
-                      <span className="flex items-center">
-                        <User className="mr-2 h-4 w-4" />
-                        User Menu
-                      </span>
-                      <span className="ml-2">→</span>
+                      Dropdown Menu
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuItem className="flex items-center">
-                      <User className="mr-2 h-4 w-4" />
-                      Profile
+                      Item 1
                     </DropdownMenuItem>
                     <DropdownMenuItem className="flex items-center">
-                      <Settings className="mr-2 h-4 w-4" />
-                      Settings
+                      Item 2
                     </DropdownMenuItem>
                     <DropdownMenuItem className="flex items-center">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Sign out
+                      Item 3
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
